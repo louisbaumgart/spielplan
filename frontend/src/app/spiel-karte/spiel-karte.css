@@ -1,0 +1,18 @@
+.karte {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+}
+.karte.live { border-color: #d32f2f; }
+.team { display: flex; align-items: center; gap: 8px; }
+.heim { justify-content: flex-end; text-align: right; }
+.team img { width: 28px; height: 28px; object-fit: contain; }
+.mitte { display: flex; flex-direction: column; align-items: center; min-width: 64px; }
+.ergebnis { font-size: 1.3rem; font-weight: 700; }
+.uhrzeit { color: #555; }
+.badge { font-size: 0.7rem; color: #fff; background: #d32f2f; padding: 1px 6px; border-radius: 4px; }

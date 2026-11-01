@@ -1,1 +1,8 @@
-<p>spielplan-seite works!</p>
+@if (spieltag(); as st) {
+  <h2>{{ st.spieltag }}. Spieltag</h2>
+  @for (spiel of st.spiele; track spiel.id) {
+    <app-spiel-karte [spiel]="spiel" />
+  }
+} @else {
+  <p>Lade Spiele …</p>
+}
