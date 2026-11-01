@@ -1,1 +1,22 @@
-<p>spiel-karte works!</p>
+<article class="karte" [class.live]="spiel().status === 'live'">
+  <div class="team heim">
+    <span>{{ spiel().heim.name }}</span>
+    <img [src]="spiel().heim.logo" [alt]="spiel().heim.kurzname" />
+  </div>
+
+  <div class="mitte">
+    @if (spiel().status === 'geplant') {
+      <span class="uhrzeit">{{ spiel().anstoss | date: 'HH:mm' }}</span>
+    } @else {
+      <span class="ergebnis">{{ spiel().toreHeim ?? 0 }} : {{ spiel().toreGast ?? 0 }}</span>
+      @if (spiel().status === 'live') {
+        <span class="badge">LIVE</span>
+      }
+    }
+  </div>
+
+  <div class="team gast">
+    <img [src]="spiel().gast.logo" [alt]="spiel().gast.kurzname" />
+    <span>{{ spiel().gast.name }}</span>
+  </div>
+</article>
