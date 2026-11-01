@@ -1,0 +1,7 @@
+.navigation { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.navigation a { text-decoration: none; color: #0b3d2e; font-weight: 600; }
+.navigation h2 { font-size: 1.1rem; margin: 0; }
+section { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
+h3 { font-size: 0.95rem; color: #555; margin: 0; }
+.hinweis { text-align: center; color: #555; margin-top: 32px; }
+.fehler { color: #d32f2f; }

@@ -1,8 +1,32 @@
 @if (spieltag(); as st) {
-  <h2>{{ st.spieltag }}. Spieltag</h2>
-  @for (spiel of st.spiele; track spiel.id) {
-    <app-spiel-karte [spiel]="spiel" />
-  }
+  <nav class="navigation">
+    @if (st.spieltag > 1) {
+      <a [routerLink]="['/spieltag', st.spieltag - 1]">‹ Zurück</a>
+    } @else {
+      <span></span>
+    }
+    <h2>{{ st.spieltag }}. Spieltag · Saison {{ st.saison }}/{{ (st.saison + 1) % 100 }}</h2>
+    @if (st.spieltag < 34) {
+      <a [routerLink]="['/spieltag', st.spieltag + 1]">Weiter ›</a>
+    } @else {
+      <span></span>
+    }
+  </nav>
+}
+
+@if (laedt()) {
+  <p class="hinweis">Lade Spiele …</p>
+} @else if (fehler()) {
+  <p class="hinweis fehler">{{ fehler() }}</p>
 } @else {
-  <p>Lade Spiele …</p>
+  @for (tag of tage(); track tag.datum) {
+    <section>
+      <h3>{{ tag.datum | date: 'EEEE, d. MMMM y' }}</h3>
+      @for (spiel of tag.spiele; track spiel.id) {
+        <app-spiel-karte [spiel]="spiel" />
+      }
+    </section>
+  } @empty {
+    <p class="hinweis">Keine Spiele gefunden.</p>
+  }
 }
